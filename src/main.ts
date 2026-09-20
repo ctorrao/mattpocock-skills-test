@@ -1,3 +1,4 @@
+import "./style.css";
 import { loadSourcePdf, splitPdf } from "./splitting";
 import { describeRangeSet, parseRangeSet, type Range } from "./rangeParsing";
 import { namePart } from "./naming";
@@ -40,6 +41,7 @@ function showSourcePdfSummary(filename: string, pageCount: number): void {
 function showProblems(problems: string[]): void {
   problemSummary.replaceChildren();
   const list = document.createElement("ul");
+  list.className = "problem-list";
   for (const problem of problems) {
     const item = document.createElement("li");
     item.textContent = problem;
@@ -51,6 +53,7 @@ function showProblems(problems: string[]): void {
 function showRangeSetInterpretation(descriptions: string[]): void {
   rangeSetInterpretation.replaceChildren();
   const list = document.createElement("ul");
+  list.className = "interpretation-list";
   for (const description of descriptions) {
     const item = document.createElement("li");
     item.textContent = description;
@@ -103,7 +106,17 @@ function showResults(
     const link = document.createElement("a");
     link.href = url;
     link.download = namePart(filename, range);
-    link.textContent = `${link.download} — ${describeRangeSpan(range)}, ${formatSize(partBytes.byteLength)}`;
+    link.className = "part";
+
+    const name = document.createElement("span");
+    name.className = "part-name";
+    name.textContent = link.download;
+
+    const meta = document.createElement("span");
+    meta.className = "part-meta";
+    meta.textContent = `${describeRangeSpan(range)}, ${formatSize(partBytes.byteLength)}`;
+
+    link.append(name, meta);
 
     const item = document.createElement("li");
     item.appendChild(link);

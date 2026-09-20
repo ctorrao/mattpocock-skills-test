@@ -20,6 +20,10 @@ _Avoid_: Interval, span, selection
 The ordered list of Ranges the user asks for. Order is significant, and Ranges may overlap or repeat.
 _Avoid_: Selection, page list, split points
 
+**Interpretation**:
+The plain-English readback of a Range Set, naming the Part each Range will produce. It is shown before a Split, so the user can check their intent against ours.
+_Avoid_: Preview, echo, summary
+
 **Part**:
 One output PDF, produced from exactly one Range. A Range Set of _n_ Ranges always yields _n_ Parts.
 _Avoid_: Chunk, section, split, output document
@@ -31,3 +35,7 @@ _Avoid_: Explode, split all, page mode
 **Split**:
 The operation that turns a Source PDF and a Range Set into an ordered list of Parts.
 _Avoid_: Extract, divide, chop
+
+**Problem**:
+A reason a Source PDF or Range Set cannot be Split, stated in the user's terms rather than the machine's. Problems are all-or-nothing: while one stands, no Parts are produced.
+_Avoid_: Error, warning, validation message
