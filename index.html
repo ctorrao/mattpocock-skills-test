@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDF Splitter</title>
+  </head>
+  <body>
+    <main>
+      <h1>PDF Splitter</h1>
+
+      <label for="source-pdf-input">Choose a Source PDF</label>
+      <input id="source-pdf-input" type="file" accept="application/pdf" />
+
+      <p id="source-pdf-summary"></p>
+
+      <div id="problem-summary" role="status" aria-live="polite"></div>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
